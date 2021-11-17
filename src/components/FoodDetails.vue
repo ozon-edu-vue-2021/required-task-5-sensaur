@@ -30,6 +30,12 @@
                 <button v-on:click="removeItem" class="btn btn-danger">
                   Удалить из корзины
                 </button>
+                <button
+                  v-on:click="addToFavorites"
+                  class="btn btn-outline-primary"
+                >
+                  В избранное
+                </button>
               </div>
             </div>
           </div>
@@ -64,6 +70,9 @@ export default {
     },
     removeItem() {
       this.$store.dispatch("removeItem", this.details);
+    },
+    addToFavorites() {
+      this.$store.dispatch("addToFavorites", this.details);
     },
   },
   created() {

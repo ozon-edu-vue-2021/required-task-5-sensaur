@@ -70,7 +70,7 @@
           style="width: 80%; margin-top: 2%"
         >
           <button v-on:click="checkout" class="btn btn-primary" type="button">
-            Checkout
+            Купить
           </button>
         </div>
       </div>
