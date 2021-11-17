@@ -3,7 +3,7 @@
     <div class="header">
       <router-link to="/">
         <div class="logo">
-          <h4 class="sweet">Магазин</h4>
+          <h4 class="label">Магазин</h4>
         </div>
       </router-link>
 
@@ -50,12 +50,14 @@ export default {
   cursor: pointer;
 }
 
-.sweet {
-  color: deeppink;
+.label {
+  color: dodgerblue;
   font-weight: 600;
   margin-top: 7px;
 }
-
+a {
+  text-decoration: none;
+}
 .cart-count {
   font-size: 15px;
   color: #d4570cf2;
@@ -72,15 +74,5 @@ export default {
   font-size: 24px;
   color: #2aa5a0;
   cursor: pointer;
-}
-
-.login,
-.register {
-  font-weight: 600;
-  margin: 5px 5px 5px 5px;
-}
-
-.link {
-  margin: 5px 5px 5px 5px;
 }
 </style>

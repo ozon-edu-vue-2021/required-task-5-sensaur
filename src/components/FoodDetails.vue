@@ -31,7 +31,7 @@
                   Удалить из корзины
                 </button>
                 <button
-                  v-on:click="addToFavorites"
+                  v-on:click="setFavorite"
                   class="btn btn-outline-primary"
                 >
                   В избранное
@@ -71,8 +71,8 @@ export default {
     removeItem() {
       this.$store.dispatch("removeItem", this.details);
     },
-    addToFavorites() {
-      this.$store.dispatch("addToFavorites", this.details);
+    setFavorite() {
+      this.$store.dispatch("setFavorite", this.details);
     },
   },
   created() {

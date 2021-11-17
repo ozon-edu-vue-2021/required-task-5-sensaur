@@ -146,9 +146,9 @@ export const store = new Vuex.Store({
       let item = payload;
       item = { ...item, quantity: 1 };
       if (state.cartItems.length > 0) {
-        let bool = state.cartItems.some((i) => i.id == item.id);
-        if (bool == true) {
-          let itemIndex = state.cartItems.findIndex((el) => el.id == item.id);
+        let bool = state.cartItems.some((i) => i.id === item.id);
+        if (bool === true) {
+          let itemIndex = state.cartItems.findIndex((el) => el.id === item.id);
           state.cartItems[itemIndex]["quantity"] += 1;
         } else {
           state.cartItems.push(item);
@@ -160,9 +160,9 @@ export const store = new Vuex.Store({
     },
     removeItem(state, payload) {
       if (state.cartItems.length > 0) {
-        let bool = state.cartItems.some((i) => i.id == payload.id);
+        let bool = state.cartItems.some((i) => i.id === payload.id);
         if (bool) {
-          let index = state.cartItems.findIndex((el) => el.id == payload.id);
+          let index = state.cartItems.findIndex((el) => el.id === payload.id);
           state.cartItems[index]["quantity"] === 0
             ? (state.cartItems[index]["quantity"] = 0)
             : (state.cartItems[index]["quantity"] -= 1);
@@ -172,11 +172,18 @@ export const store = new Vuex.Store({
         }
       }
     },
-    addToFavorites(state, payload) {
-      // console.log(state, payload);
+    setFavorite(state, payload) {
       let item = payload;
-      item.isFavorite = !item.isFavorite;
-      // item.isFavorite ? state.favoriteItems.push(item) : state.favoriteItems.pop(item)
+      let index = state.favoriteItems.findIndex((el) => el.id === payload.id);
+      // console.log(index);
+      if (index === -1) {
+        item.isFavorite = !item.isFavorite;
+        // console.log("добавляем");
+        return state.favoriteItems.push(item);
+      } else {
+        // console.log("убираем");
+        state.favoriteItems.splice(index, 1);
+      }
     },
   },
   actions: {
@@ -191,8 +198,8 @@ export const store = new Vuex.Store({
         context.commit("increment", payload);
       }, 5000);
     },
-    addToFavorites: (context, payload) => {
-      context.commit("addToFavorites", payload);
+    setFavorite: (context, payload) => {
+      context.commit("setFavorite", payload);
     },
   },
   getters: {
@@ -203,8 +210,9 @@ export const store = new Vuex.Store({
       });
       return price;
     },
-    collectFavorites: (state) => {
-      state.favoriteItems.push(state.topRated.filter((el) => el.isFavorite === true))
+    getFavorites: (state) => {
+      // console.log(state.favoriteItems);
+      return state.favoriteItems;
     },
   },
 });
