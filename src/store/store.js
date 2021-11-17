@@ -19,22 +19,29 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   state: {
     topRated: [
-      { id: 1, name: "Item 1", price: 100, url: item1, desc: "aaa", rate: 5 },
-      { id: 2, name: "Item 2", price: 200, url: item2, desc: "bbb", rate: 4 },
-      { id: 3, name: "Item 3", price: 300, url: item3, desc: "ccc", rate: 3 },
-      { id: 4, name: "Item 4", price: 400, url: item4, desc: "ddd", rate: 3 },
+      { id: 1, name: "Гречотто", price: 100, url: item1, desc: "aaa", rate: 5 },
+      { id: 2, name: "Борщ", price: 200, url: item2, desc: "bbb", rate: 4 },
+      { id: 3, name: "Солянка", price: 300, url: item3, desc: "ccc", rate: 3 },
+      {
+        id: 4,
+        name: "Карбонара",
+        price: 400,
+        url: item4,
+        desc: "ddd",
+        rate: 3,
+      },
     ],
     allCategories: [
-      { id: 5, name: "Item 5", price: 100, url: item5, desc: "eee", rate: 2 },
-      { id: 6, name: "Item 6", price: 100, url: item6, desc: "fff", rate: 2 },
-      { id: 7, name: "Item 7", price: 100, url: item7, desc: "ggg", rate: 1 },
-      { id: 8, name: "Item 8", price: 100, url: item8, desc: "hhh", rate: 1 },
+      { id: 5, name: "Попкорн", price: 100, url: item5, desc: "eee", rate: 2 },
+      { id: 6, name: "Блины", price: 100, url: item6, desc: "fff", rate: 2 },
+      { id: 7, name: "Котлетос", price: 100, url: item7, desc: "ggg", rate: 1 },
+      { id: 8, name: "Йогурт", price: 100, url: item8, desc: "hhh", rate: 1 },
     ],
-    dishesNearYou: [
-      { id: 9, name: "Item 9", price: 50, url: item9, desc: "jjj", rate: 1 },
-      { id: 10, name: "Item 10", price: 50, url: item10, desc: "kkk", rate: 0 },
-      { id: 11, name: "Item 11", price: 50, url: item11, desc: "lll", rate: 1 },
-      { id: 12, name: "Item 12", price: 50, url: item12, desc: "mmm", rate: 2 },
+    promo: [
+      { id: 9, name: "Колбаса", price: 50, url: item9, desc: "jjj", rate: 1 },
+      { id: 10, name: "Паштет", price: 50, url: item10, desc: "kkk", rate: 0 },
+      { id: 11, name: "Сосиски", price: 50, url: item11, desc: "lll", rate: 1 },
+      { id: 12, name: "Бри", price: 50, url: item12, desc: "mmm", rate: 2 },
     ],
     count: 0,
     cartItemCount: 0,
@@ -64,7 +71,7 @@ export const store = new Vuex.Store({
     removeItem(state, payload) {
       if (state.cartItems.length > 0) {
         let bool = state.cartItems.some((i) => i.id == payload.id);
-        console.log("bool", bool);
+        // console.log("bool", bool);
         if (bool) {
           let index = state.cartItems.findIndex((el) => el.id == payload.id);
           //to prevent quantity from being negative
@@ -92,8 +99,12 @@ export const store = new Vuex.Store({
     },
   },
   getters: {
-    doneTodos: (state) => {
-      return state.todos.filter((todo) => todo.done);
+    countTotal: (state) => {
+      let price = 0;
+      state.cartItems.map((el) => {
+        price += el["quantity"] * el["price"];
+      });
+      return price;
     },
   },
 });

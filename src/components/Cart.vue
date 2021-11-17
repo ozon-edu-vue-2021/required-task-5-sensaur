@@ -37,7 +37,8 @@
                       width="50px"
                       height="50px"
                       style="border-radius: 50%"
-                     alt=""/>
+                      alt=""
+                    />
                     <h6 class="mt-15">{{ items.name }}</h6>
                     <div class="d-flex mt-10">
                       <button
@@ -108,9 +109,9 @@ export default {
       this.$store.dispatch("removeItem", item);
     },
     checkout() {
-      console.log(this.$store.state.cartItems);
+      // console.log(this.$store.state.cartItems);
       const finalOrder = this.$store.state.cartItems.map((el) => el.name);
-      console.log(finalOrder);
+      // console.log(finalOrder);
       swal(
         `Спасибо!`,
         `Товары ${finalOrder} оформлены в доставку`,
@@ -125,17 +126,12 @@ export default {
       return this.$store.state.cartItems;
     },
     totalPrice() {
-      let price = 0;
-      this.$store.state.cartItems.map((el) => {
-        price += el["quantity"] * el["price"];
-      });
-      return price;
+      return this.$store.getters.countTotal;
     },
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .cart-outer-div {
   flex-direction: column;
@@ -222,6 +218,4 @@ input[type="text"] {
 .orange-red {
   color: orangered;
 }
-
-
 </style>

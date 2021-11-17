@@ -16,7 +16,8 @@
               width="300px"
               height="300px"
               style="border-radius: 15px"
-              alt="" />
+              alt=""
+            />
             <h5 class="fw-600 black">{{ items.name }}</h5>
           </div>
         </div>
@@ -25,6 +26,7 @@
           <div
             v-for="items in allCategories"
             :key="items.id"
+            v-on:click="foodDetails(items)"
             class="col-md-3 pointer"
           >
             <img
@@ -32,7 +34,8 @@
               width="300px"
               height="300px"
               style="border-radius: 15px"
-              alt="" />
+              alt=""
+            />
             <h5 class="fw-600 black">{{ items.name }}</h5>
           </div>
         </div>
@@ -41,6 +44,7 @@
           <div
             v-for="items in dishesNearYou"
             :key="items.id"
+            v-on:click="foodDetails(items)"
             class="col-md-3 pointer"
           >
             <img
@@ -48,7 +52,8 @@
               width="300px"
               height="300px"
               style="border-radius: 15px"
-              alt='' />
+              alt=""
+            />
             <h5 class="fw-600 black">{{ items.name }}</h5>
           </div>
         </div>
@@ -66,7 +71,7 @@ export default {
   name: "Home",
   components: {
     Header,
-    Footer
+    Footer,
   },
   computed: {
     topRated() {
@@ -76,14 +81,14 @@ export default {
       return this.$store.state.allCategories;
     },
     dishesNearYou() {
-      return this.$store.state.dishesNearYou;
-    }
+      return this.$store.state.promo;
+    },
   },
   methods: {
     foodDetails(item) {
       this.$router.push({ name: "food-details", params: item });
-    }
-  }
+    },
+  },
 };
 </script>
 

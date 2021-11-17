@@ -60,7 +60,7 @@ export default {
     },
     addToCart() {
       this.$store.dispatch("addToCart", this.details);
-      console.log("this.$store", this.$store.state.cartItems);
+      // console.log("this.$store", this.$store.state.cartItems);
     },
     removeItem() {
       this.$store.dispatch("removeItem", this.details);
