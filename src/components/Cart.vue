@@ -77,7 +77,7 @@
         </div>
       </div>
       <div v-else class="container my-5" style="text-align: center">
-        <img src="../assets/shopping-cart.png" width="200px"  alt=""/>
+        <img src="../assets/shopping-cart.png" width="200px" alt="" />
         <div class="mt-4">
           <h4 class="orange-red fw-600">Ваша корзина пуста</h4>
         </div>
