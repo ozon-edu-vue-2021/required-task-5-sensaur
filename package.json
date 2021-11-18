@@ -15,7 +15,8 @@
     "vue-router": "^3.5.3",
     "vue-svg-loader": "^0.16.0",
     "vuedraggable": "^2.24.3",
-    "vuex": "^3.6.2"
+    "vuex": "^3.6.2",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
