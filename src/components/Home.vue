@@ -18,7 +18,9 @@
               style="border-radius: 15px"
               alt=""
             />
-            <h5 class="fw-600 black">{{ items.name }}</h5>
+            <h5 class="fw-600 black">
+              {{ items.name }} Цена {{ items.price }} руб.
+            </h5>
           </div>
         </div>
         <h4 class="my-4 fw-600 d-blue">Разное</h4>
@@ -36,13 +38,15 @@
               style="border-radius: 15px"
               alt=""
             />
-            <h5 class="fw-600 black">{{ items.name }}</h5>
+            <h5 class="fw-600 black">
+              {{ items.name }} Цена {{ items.price }} руб.
+            </h5>
           </div>
         </div>
         <h4 class="my-4 fw-600 d-blue">Акции</h4>
         <div class="row">
           <div
-            v-for="items in dishesNearYou"
+            v-for="items in promo"
             :key="items.id"
             v-on:click="foodDetails(items)"
             class="col-md-3 pointer"
@@ -54,7 +58,9 @@
               style="border-radius: 15px"
               alt=""
             />
-            <h5 class="fw-600 black">{{ items.name }}</h5>
+            <h5 class="fw-600 black">
+              {{ items.name }} Цена {{ items.price }} руб.
+            </h5>
           </div>
         </div>
       </div>
@@ -75,13 +81,13 @@ export default {
   },
   computed: {
     topRated() {
-      return this.$store.state.topRated;
+      return this.$store.getters.topRated;
     },
     allCategories() {
-      return this.$store.state.allCategories;
+      return this.$store.getters.allCategories;
     },
-    dishesNearYou() {
-      return this.$store.state.promo;
+    promo() {
+      return this.$store.getters.promo;
     },
   },
   methods: {

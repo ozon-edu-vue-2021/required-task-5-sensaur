@@ -39,7 +39,9 @@
                       style="border-radius: 50%"
                       alt=""
                     />
-                    <h6 class="mt-15">{{ items.name }}</h6>
+                    <h6 class="mt-15">
+                      {{ items.name }} по {{ items.price }} за шт.
+                    </h6>
                     <div class="d-flex mt-10">
                       <button
                         v-on:click="removeItem(items)"
@@ -75,7 +77,7 @@
         </div>
       </div>
       <div v-else class="container my-5" style="text-align: center">
-        <img src="../assets/shopping-cart.png" width="200px" />
+        <img src="../assets/shopping-cart.png" width="200px"  alt=""/>
         <div class="mt-4">
           <h4 class="orange-red fw-600">Ваша корзина пуста</h4>
         </div>

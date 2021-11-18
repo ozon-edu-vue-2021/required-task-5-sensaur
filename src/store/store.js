@@ -18,7 +18,7 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    topRated: [
+    stock: [
       {
         id: 1,
         name: "Гречотто",
@@ -55,8 +55,6 @@ export const store = new Vuex.Store({
         rate: 3,
         isFavorite: false,
       },
-    ],
-    allCategories: [
       {
         id: 5,
         name: "Попкорн",
@@ -81,7 +79,7 @@ export const store = new Vuex.Store({
         price: 100,
         url: item7,
         desc: "ggg",
-        rate: 1,
+        rate: 2,
         isFavorite: false,
       },
       {
@@ -90,11 +88,9 @@ export const store = new Vuex.Store({
         price: 100,
         url: item8,
         desc: "hhh",
-        rate: 1,
+        rate: 2,
         isFavorite: false,
       },
-    ],
-    promo: [
       {
         id: 9,
         name: "Колбаса",
@@ -110,7 +106,7 @@ export const store = new Vuex.Store({
         price: 50,
         url: item10,
         desc: "kkk",
-        rate: 0,
+        rate: 1,
         isFavorite: false,
       },
       {
@@ -128,7 +124,7 @@ export const store = new Vuex.Store({
         price: 50,
         url: item12,
         desc: "mmm",
-        rate: 2,
+        rate: 1,
         isFavorite: false,
       },
     ],
@@ -137,6 +133,9 @@ export const store = new Vuex.Store({
     cartItems: [],
     totalPrice: 0,
     favoriteItems: [],
+    topRated: [],
+    allCategories: [],
+    promo: [],
   },
   mutations: {
     increment(state) {
@@ -213,6 +212,15 @@ export const store = new Vuex.Store({
     getFavorites: (state) => {
       // console.log(state.favoriteItems);
       return state.favoriteItems;
+    },
+    topRated: (state) => {
+      return (state.topRated = state.stock.filter((el) => el.rate >= 3));
+    },
+    allCategories: (state) => {
+      return (state.allCategories = state.stock.filter((el) => el.rate === 2));
+    },
+    promo: (state) => {
+      return (state.promo = state.stock.filter((el) => el.rate === 1));
     },
   },
 });

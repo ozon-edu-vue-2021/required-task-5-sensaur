@@ -20,7 +20,9 @@
                 style="border-radius: 50%"
                 alt=""
               />
-              <h6 class="mt-15">{{ items.name }}</h6>
+              <h6 class="mt-15">
+                {{ items.name }} Цена {{ items.price }} руб.
+              </h6>
             </div>
           </li>
         </ul>
